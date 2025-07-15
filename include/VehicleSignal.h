@@ -7,12 +7,12 @@
 class VehicleSignal {
     public:
         VehicleSignal(const std::string& name, float minVal, float maxVal, float step);
-        void updateSignal();
-        float getSignalValue();
-        std::string getSignalName();
+        void update();
+        float getValue();
+        std::string getName();
     private:
-        float mSignal;
-        std::string mSignalname;
+        float mSignalValue;
+        std::string mSignalName;
         float minVal, maxVal, step;
         std::mutex mtx;
 };
