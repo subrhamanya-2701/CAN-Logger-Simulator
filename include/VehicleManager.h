@@ -10,6 +10,7 @@ class VehicleManager {
         void addSignal(std::shared_ptr<VehicleSignal> signal);
         void startSimulation();
         void printDashboard();
+        size_t getSignalsize();
     private:
         std::vector<std::shared_ptr<VehicleSignal>> Signals;
         std::vector<std::thread> Signalthread;

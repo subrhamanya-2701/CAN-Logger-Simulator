@@ -26,6 +26,11 @@ void VehicleManager::printDashboard() {
         for(std::shared_ptr<VehicleSignal> &signal: Signals) {
             std::cout<<std::setw(12)<<std::left<<signal->getName()<<" : "<<signal->getValue()<<std::endl;
         }
+        std::cout<<"-------------------------------------------------------"<<std::endl;
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
+}
+
+size_t VehicleManager::getSignalsize() {
+    return Signals.size();
 }
