@@ -24,10 +24,10 @@ int main () {
 
     std::cout<<"Welcome to Can Logger Simulation"<<std::endl;
     while(true) {
-        char mUserInput;
+        std::string mUserInput;
         std::cout<<"You want to add Signal (Y/N) : ";
         std::cin>>mUserInput;
-        if(mUserInput == 'N') {
+        if(mUserInput == "N") {
             if(mVehicleManager.getSignalsize() > 0) {
                 std::cout<<"Starting the Simulations";
                 std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -43,7 +43,7 @@ int main () {
                 std::cout<<"Can't start simulation for Empty signals::Exit"<<std::endl;
                 exit(0);
             }
-        } else if(mUserInput == 'Y') {
+        } else if(mUserInput == "Y") {
             AskUser(SignalName, minVal, maxVal, steps);
             auto signal = std::make_shared<VehicleSignal>(SignalName, minVal, maxVal, steps);
             mVehicleManager.addSignal(signal);
