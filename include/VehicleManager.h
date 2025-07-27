@@ -4,6 +4,11 @@
 #include <memory>
 #include <vector>
 #include <thread>
+#include <fstream>
+#include <mutex>
+
+extern std::ofstream csvlogFile;
+extern std::mutex csvMutex;
 
 class VehicleManager {
     public:
