@@ -3,17 +3,29 @@
 #include <thread>
 #include "VehicleManager.h"
 
+template<class T>
+void getValidatedFloat(const std::string &prompt, T &value) {
+    while (true) {
+        std::cout<<std::left<<std::setw(25)<<prompt;
+        std::cin>>value;
+
+        if(std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(1000, '\n');
+            std::cout<<"Invald number. Please try again..."<<std::endl;
+        }
+        else {
+            std::cin.ignore(1000, '\n');
+            break;
+        }
+    }
+}
+
 void AskUser(std::string &Name, float &minVal, float &maxVal, float &steps) {
-    std::cout<<std::left<<std::setw(25)<<"Enter Signal Name: ";
-    std::cin>>Name;
-    std::cout<<std::left<<std::setw(25)<<"Enter Minimum Value: ";
-    std::cin>>minVal;
-    std::cout<<std::endl;
-    std::cout<<std::left<<std::setw(25)<<"Enter Maximum Value: ";
-    std::cin>>maxVal;
-    std::cout<<std::endl;
-    std::cout<<std::left<<std::setw(25)<<"Enter Update Step Value: ";
-    std::cin>>steps;
+    getValidatedFloat("Enter Signal Name: ", Name);
+    getValidatedFloat("Enter Minimum Value: ", minVal);
+    getValidatedFloat("Enter Maximum Value: ", maxVal);
+    getValidatedFloat("Enter Update Step Value: ", steps);
 }
 
 int main () {
@@ -50,6 +62,7 @@ int main () {
         }
         else {
             std::cout<<"Entered wrong Input please Try Again..."<<std::endl;
+            std::cin.clear();
             std::this_thread::sleep_for(std::chrono::seconds(1));
         }
     }
